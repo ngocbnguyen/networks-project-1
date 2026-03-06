@@ -12,3 +12,13 @@
     font-style: normal;
     color: black;
 }
+  
+.navbar-brand, h1, h2, h3 {
+font-family: "Playfair Display", serif;
+font-optical-sizing: auto;
+}
+
+.nav-link:hover {
+color: black;
+text-decoration: underline;
+}

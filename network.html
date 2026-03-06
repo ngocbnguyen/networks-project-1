@@ -1,10 +1,249 @@
-<!DOCTYPE html>
-<html lang="'en">
-    <head>
-        <!--CSS-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
-        <!--JS BUndled with Popper-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Networking Concepts | Public Website Networks Project</title>
+
+    <!--google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--bootstrap css-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <!--site css-->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!--basic security meta (best effort for static sites)-->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https:; img-src 'self' https: data:; style-src 'self' https: 'unsafe-inline'; script-src 'self' https: 'unsafe-inline';"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+
+        <!--header / navigation-->
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+
+            <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span id="homeHeader" class="fs-4">Public Website Networks by Ngoc Nguyen</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="network.html" class="nav-link active">Networks</a>
+                </li>
+            </ul>
+        </header>
+
+    <main class="container py-4">
+      <div class="mb-4">
+        <h1 class="display-6 mb-2">Networking Concepts</h1>
+        <p class="text-muted mb-0">
+          This page explains how networking makes my deployed website work, with evidence (DNS lookup, IP address result,
+          and HTTPS request details).
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <div class="p-3 rounded-4 border bg-body-tertiary">
+            <h2 class="h6 mb-2">Project info</h2>
+            <ul class="small mb-0">
+              <li><strong>Domain:</strong> (fill in) username.github.io or custom domain</li>
+              <li><strong>Resolved IP:</strong> (fill in) IPv4 and/or IPv6</li>
+              <li><strong>Protocol:</strong> (fill in) HTTPS</li>
+              <li><strong>Status code:</strong> (fill in) 200 OK</li>
+            </ul>
+          </div>
+        </div>
+
+        <!--DNS-->
+        <div class="col-12">
+          <div class="p-4 rounded-4 border bg-white">
+            <h2 class="h4 mb-3">1) DNS (Domain Name System)</h2>
+            <p>
+              When a user visits my site using the domain name, the browser must first find the IP address. DNS does
+              this by resolving the domain (example: <code>username.github.io</code>) to the server IP address that
+              hosts the website.
+            </p>
+
+            <div class="row g-3">
+              <div class="col-12 col-lg-6">
+                <h3 class="h6">Command I ran (evidence)</h3>
+                <pre class="bg-body-tertiary p-3 rounded-3 mb-0"><code>nslookup yourdomain.com</code></pre>
+                <p class="small text-muted mt-2 mb-0">
+                  Replace <code>yourdomain.com</code> with your real domain.
+                </p>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <h3 class="h6">What to screenshot</h3>
+                <ul class="mb-0">
+                  <li>Domain name</li>
+                  <li>Resolved IP address</li>
+                </ul>
+              </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <h3 class="h6">Paste your real output here</h3>
+            <pre class="bg-body-tertiary p-3 rounded-3"><code>(paste your nslookup or dig output here)</code></pre>
+
+            <p class="small text-muted mb-0">
+              Short explanation: DNS gave me the IP address so my browser knows where to connect on the internet.
+            </p>
+          </div>
+        </div>
+
+        <!--IP addressing-->
+        <div class="col-12">
+          <div class="p-4 rounded-4 border bg-white">
+            <h2 class="h4 mb-3">2) IP Addressing</h2>
+            <p>
+              The DNS result shows the IP address for my domain. That IP address is the network destination the browser
+              connects to. In my deployment, the resolved address is:
+            </p>
+
+            <div class="row g-3">
+              <div class="col-12 col-lg-6">
+                <div class="p-3 rounded-3 border">
+                  <div class="small text-muted">IPv4 address</div>
+                  <div class="fs-5 fw-semibold">(fill in) 0.0.0.0</div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="p-3 rounded-3 border">
+                  <div class="small text-muted">IPv6 address (if shown)</div>
+                  <div class="fs-5 fw-semibold">(fill in) ::</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-3 mb-0">
+              If my DNS output shows both IPv4 and IPv6, that means clients can reach the site using either addressing
+              system (depending on their network).
+            </p>
+          </div>
+        </div>
+
+        <!--Protocols-->
+        <div class="col-12">
+          <div class="p-4 rounded-4 border bg-white">
+            <h2 class="h4 mb-3">3) Protocols (HTTP vs HTTPS) + Status Codes + Headers</h2>
+            <p>
+              After DNS resolution, the browser connects to the server using TCP/IP and requests the page using HTTP.
+              For a public deployment, my site uses <strong>HTTPS</strong>, which is HTTP over TLS encryption.
+            </p>
+
+            <div class="row g-3">
+              <div class="col-12 col-lg-6">
+                <h3 class="h6">How I collected evidence</h3>
+                <ol class="mb-0">
+                  <li>Open the deployed website</li>
+                  <li>Right click, choose Inspect</li>
+                  <li>Go to the Network tab</li>
+                  <li>Click the main document request (home page)</li>
+                </ol>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <h3 class="h6">What my screenshot must show</h3>
+                <ul class="mb-0">
+                  <li><strong>https</strong> in the URL</li>
+                  <li>Status code (example: <code>200</code>)</li>
+                  <li>Request/Response headers</li>
+                </ul>
+              </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <h3 class="h6">Fill in your real results</h3>
+            <div class="row g-3">
+              <div class="col-12 col-lg-4">
+                <div class="p-3 rounded-3 border">
+                  <div class="small text-muted">Protocol</div>
+                  <div class="fw-semibold">(fill in) HTTPS</div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <div class="p-3 rounded-3 border">
+                  <div class="small text-muted">Status code</div>
+                  <div class="fw-semibold">(fill in) 200 OK</div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-4">
+                <div class="p-3 rounded-3 border">
+                  <div class="small text-muted">Content type</div>
+                  <div class="fw-semibold">(fill in) text/html</div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="h6 mt-4">Paste key headers here</h3>
+            <pre class="bg-body-tertiary p-3 rounded-3 mb-0"><code>request headers:
+(fill in)
+
+response headers:
+(fill in)</code></pre>
+          </div>
+        </div>
+
+        <!--Security-->
+        <div class="col-12">
+          <div class="p-4 rounded-4 border bg-white">
+            <h2 class="h4 mb-3">4) Security feature implemented</h2>
+            <p class="mb-2">
+              My site is served over <strong>HTTPS</strong>. This protects traffic in transit using encryption, so users
+              are not sending page requests in plain text.
+            </p>
+            <ul class="mb-0">
+              <li>
+                Evidence: a DevTools screenshot showing <code>https://</code> and the request status (example:
+                <code>200 OK</code>).
+              </li>
+              <li>
+                Extra (best effort): this site also includes basic security meta tags like a CSP and referrer policy in
+                the HTML head.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-top">
+      <div class="container py-3 small text-muted d-flex justify-content-between flex-wrap gap-2">
+        <span>© 2026 Ngoc Nguyen</span>
+        <a class="text-muted text-decoration-none" href="home.html">Back to Home</a>
+      </div>
+    </footer>
+
+    <!--bootstrap js bundle-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
