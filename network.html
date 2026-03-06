@@ -68,7 +68,7 @@
           <div class="p-3 rounded-4 border bg-body-tertiary">
             <h2 class="h6 mb-2">Project info</h2>
             <ul class="small mb-0">
-              <li><strong>Domain:</strong> ngocbnguyen.github.io/networks-project-1/</li>
+              <li><strong>Domain:</strong>ngocbnguyen.github.io</li>
               <li><strong>Resolved IP:</strong> (fill in) IPv4 and/or IPv6</li>
               <li><strong>Protocol:</strong> (fill in) HTTPS</li>
               <li><strong>Status code:</strong> (fill in) 200 OK</li>
@@ -81,30 +81,44 @@
           <div class="p-4 rounded-4 border bg-white">
             <h2 class="h4 mb-3">1) DNS (Domain Name System)</h2>
             <p>
-              When a user visits my site using the domain name, the browser must first find the IP address. DNS does
-              this by resolving the domain (ngocbnguyen.github.io/networks-project-1) to the server IP address that
-              hosts the website.
+                When a user enters https://ngocbnguyen.github.io in a browser, the browser must first determine the server’s IP
+                 address because computers communicate using IP addresses rather than domain names. The browser sends a DNS query to a DNS 
+                 resolver, which searches the Domain Name System for the address associated with the domain. The resolver contacts DNS 
+                 servers until it reaches GitHub’s authoritative DNS servers, which return the IP addresses used by GitHub Pages 
+                 (such as 185.199.108.153–185.199.111.153).
             </p>
 
             <div class="row g-3">
               <div class="col-12 col-lg-6">
                 <h3 class="h6">Command I ran</h3>
-                <pre class="bg-body-tertiary p-3 rounded-3 mb-0"><code>nslookup ngocbnguyen.github.io/networks-project-1</code></pre>
-              </div>
-
-              <div class="col-12 col-lg-6">
-                <h3 class="h6">What to screenshot</h3>
-                <ul class="mb-0">
-                  <li>Domain name</li>
-                  <li>Resolved IP address</li>
-                </ul>
+                <pre class="bg-body-tertiary p-3 rounded-3 mb-0"><code>nslookup ngocbnguyen.github.io</code></pre>
               </div>
             </div>
 
             <hr class="my-4" />
 
-            <h3 class="h6">Paste your real output here</h3>
-            <pre class="bg-body-tertiary p-3 rounded-3"><code>(paste your nslookup or dig output here)</code></pre>
+            <h3 class="h6">Output</h3>
+            <pre class="bg-body-tertiary p-3 rounded-3"><code> DiG 9.10.6 <<>> ngocbnguyen.github.io
+                ;; global options: +cmd
+                ;; Got answer:
+                ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3373
+                ;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1
+                
+                ;; OPT PSEUDOSECTION:
+                ; EDNS: version: 0, flags:; udp: 1440
+                ;; QUESTION SECTION:
+                ;ngocbnguyen.github.io.		IN	A
+                
+                ;; ANSWER SECTION:
+                ngocbnguyen.github.io.	1131	IN	A	185.199.111.153
+                ngocbnguyen.github.io.	1131	IN	A	185.199.109.153
+                ngocbnguyen.github.io.	1131	IN	A	185.199.108.153
+                ngocbnguyen.github.io.	1131	IN	A	185.199.110.153
+                
+                ;; Query time: 29 msec
+                ;; SERVER: fe80::1a60:41ff:fe71:840d%12#53(fe80::1a60:41ff:fe71:840d%12)
+                ;; WHEN: Thu Mar 05 22:29:13 EST 2026
+                ;; MSG SIZE  rcvd: 114</code></pre>
 
             <p class="small text-muted mb-0">
               Short explanation: DNS gave me the IP address so my browser knows where to connect on the internet.
@@ -115,115 +129,150 @@
         <!--IP addressing-->
         <div class="col-12">
           <div class="p-4 rounded-4 border bg-white">
-            <h2 class="h4 mb-3">2) IP Addressing</h2>
+            <h2 class="h4 mb-3">2) IPv4 Addressing</h2>
             <p>
-              The DNS result shows the IP address for my domain. That IP address is the network destination the browser
-              connects to. In my deployment, the resolved address is:
+              The DNS result shows the IPv4 address for my domain. That IP address is the network destination the browser
+              connects to. Once the IP address is returned, the browser establishes a connection to that server using HTTPS. 
+              The GitHub Pages server then responds with the website files, which the browser renders as the webpage. In my deployment, the resolved address is:
             </p>
 
             <div class="row g-3">
               <div class="col-12 col-lg-6">
                 <div class="p-3 rounded-3 border">
                   <div class="small text-muted">IPv4 address</div>
-                  <div class="fs-5 fw-semibold">(fill in) 0.0.0.0</div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-6">
-                <div class="p-3 rounded-3 border">
-                  <div class="small text-muted">IPv6 address (if shown)</div>
-                  <div class="fs-5 fw-semibold">(fill in) ::</div>
+                  <div class="fs-5 fw-semibold">
+                    185.199.108.153 <br>
+                    185.199.109.153 <br>
+                    185.199.110.153 <br>
+                    185.199.111.153</div>
                 </div>
               </div>
             </div>
-
-            <p class="mt-3 mb-0">
-              If my DNS output shows both IPv4 and IPv6, that means clients can reach the site using either addressing
-              system (depending on their network).
-            </p>
           </div>
         </div>
 
         <!--Protocols-->
         <div class="col-12">
           <div class="p-4 rounded-4 border bg-white">
-            <h2 class="h4 mb-3">3) Protocols (HTTP vs HTTPS) + Status Codes + Headers</h2>
+            <h2 class="h4 mb-3">3) Protocols HTTPS</h2>
             <p>
-              After DNS resolution, the browser connects to the server using TCP/IP and requests the page using HTTP.
-              For a public deployment, my site uses <strong>HTTPS</strong>, which is HTTP over TLS encryption.
+                My website <strong>ngocbnguyen.github.io</strong> uses HTTPS (Hypertext Transfer Protocol Secure), which encrypts communication between the browser and the server using TLS. 
+                HTTPS ensures that the data exchanged between users and the website cannot be easily intercepted or modified. <br>
+                When the browser requests the webpage, the server responds with the status code <strong>200 OK</strong>, indicating that the request was successful and the page was delivered correctly. 
+                The browser sends request headers that include information such as the host, user agent, and accepted content types. 
+                The server responds with response headers that describe the returned content, such as the content type and caching policies. 
+                These headers and status codes can be viewed using the browser’s Developer Tools Network tab.
             </p>
 
-            <div class="row g-3">
-              <div class="col-12 col-lg-6">
-                <h3 class="h6">How I collected evidence</h3>
-                <ol class="mb-0">
-                  <li>Open the deployed website</li>
-                  <li>Right click, choose Inspect</li>
-                  <li>Go to the Network tab</li>
-                  <li>Click the main document request (home page)</li>
-                </ol>
-              </div>
-
-              <div class="col-12 col-lg-6">
-                <h3 class="h6">What my screenshot must show</h3>
-                <ul class="mb-0">
-                  <li><strong>https</strong> in the URL</li>
-                  <li>Status code (example: <code>200</code>)</li>
-                  <li>Request/Response headers</li>
-                </ul>
-              </div>
-            </div>
-
             <hr class="my-4" />
-
-            <h3 class="h6">Fill in your real results</h3>
             <div class="row g-3">
               <div class="col-12 col-lg-4">
                 <div class="p-3 rounded-3 border">
                   <div class="small text-muted">Protocol</div>
-                  <div class="fw-semibold">(fill in) HTTPS</div>
+                  <div class="fw-semibold">HTTPS</div>
                 </div>
               </div>
               <div class="col-12 col-lg-4">
                 <div class="p-3 rounded-3 border">
                   <div class="small text-muted">Status code</div>
-                  <div class="fw-semibold">(fill in) 200 OK</div>
+                  <div class="fw-semibold">200 OK</div>
                 </div>
               </div>
               <div class="col-12 col-lg-4">
                 <div class="p-3 rounded-3 border">
                   <div class="small text-muted">Content type</div>
-                  <div class="fw-semibold">(fill in) text/html</div>
+                  <div class="fw-semibold">text/html; charset=utf-8</div>
                 </div>
               </div>
             </div>
 
             <h3 class="h6 mt-4">Paste key headers here</h3>
             <pre class="bg-body-tertiary p-3 rounded-3 mb-0"><code>request headers:
-(fill in)
+                :authority
+                ngocbnguyen.github.io
+                :method
+                GET
+                :path
+                /networks-project-1/index.html
+                :scheme
+                https
+                accept
+                text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+                accept-encoding
+                gzip, deflate, br, zstd
+                accept-language
+                en-US,en;q=0.9,vi;q=0.8
+                priority
+                u=0, i
+                referer
+                https://ngocbnguyen.github.io/networks-project-1/network.html
+                sec-ch-ua
+                "Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"
+                sec-ch-ua-mobile
+                ?0
+                sec-ch-ua-platform
+                "macOS"
+                sec-fetch-dest
+                document
+                sec-fetch-mode
+                navigate
+                sec-fetch-site
+                same-origin
+                sec-fetch-user
+                ?1
+                upgrade-insecure-requests
+                1
+                user-agent
+                Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
+                
 
 response headers:
-(fill in)</code></pre>
-          </div>
-        </div>
+accept-ranges
+bytes
+access-control-allow-origin
+*
+age
+0
+cache-control
+max-age=600
+content-encoding
+gzip
+content-length
+1639
+content-type
+text/html; charset=utf-8
+date
+Fri, 06 Mar 2026 03:56:08 GMT
+etag
+W/"69aa45b8-1462"
+expires
+Fri, 06 Mar 2026 03:24:26 GMT
+last-modified
+Fri, 06 Mar 2026 03:10:48 GMT
+server
+GitHub.com
+strict-transport-security
+max-age=31556952
+vary
+Accept-Encoding
+via
+1.1 varnish
+x-cache
+HIT
+x-cache-hits
+0
+x-fastly-request-id
+24b20930673f3352914fb937023b25c1029c2f3d
+x-github-request-id
+E591:271F9C:143E2A:15E265:69AA4691
+x-proxy-cache
+MISS
+x-served-by
+cache-pdk-kfty8610099-PDK
+x-timer
+S1772769369.615852,VS0,VE28
 
-        <!--Security-->
-        <div class="col-12">
-          <div class="p-4 rounded-4 border bg-white">
-            <h2 class="h4 mb-3">4) Security feature implemented</h2>
-            <p class="mb-2">
-              My site is served over <strong>HTTPS</strong>. This protects traffic in transit using encryption, so users
-              are not sending page requests in plain text.
-            </p>
-            <ul class="mb-0">
-              <li>
-                Evidence: a DevTools screenshot showing <code>https://</code> and the request status (example:
-                <code>200 OK</code>).
-              </li>
-              <li>
-                Extra (best effort): this site also includes basic security meta tags like a CSP and referrer policy in
-                the HTML head.
-              </li>
-            </ul>
+</code></pre>
           </div>
         </div>
       </div>
@@ -232,7 +281,7 @@ response headers:
     <footer class="border-top">
       <div class="container py-3 small text-muted d-flex justify-content-between flex-wrap gap-2">
         <span>© 2026 Ngoc Nguyen</span>
-        <a class="text-muted text-decoration-none" href="home.html">Back to Home</a>
+        <a class="text-muted text-decoration-none" href="index.html">Back to Home</a>
       </div>
     </footer>
 
