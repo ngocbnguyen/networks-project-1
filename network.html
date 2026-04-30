@@ -1,310 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Concepts</title>
 
-    <title>Networking Concepts | Public Website Networks Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2EPJ9100K"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-X2EPJ9100K');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X2EPJ9100K');
     </script>
-    
-    <!--JS Bundled with Popper-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"></script>
-    <!--google font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
+</head>
 
-    <!--bootstrap css-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-
-    <!--site css-->
-    <link rel="stylesheet" href="css/style.css" />
-
-    <!--basic security meta (best effort for static sites)-->
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self' https:; img-src 'self' https: data:; style-src 'self' https: 'unsafe-inline'; script-src 'self' https: 'unsafe-inline';"
-    />
-  </head>
-
-  <body>
+<body>
     <div class="container">
-
-        <!--header / navigation-->
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-
             <a href="home.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <span id="homeHeader" class="fs-4">Public Website Networks by Ngoc Nguyen</span>
             </a>
 
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link" aria-current="page">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="network.html" class="nav-link active">Networks</a>
-                </li>
+            <ul class="nav nav-underline">
+                <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="network.html" class="nav-link active">Networks</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link">Owner Login</a></li>
             </ul>
         </header>
 
-    <main class="container py-4">
-      <div class="mb-4">
-        <h1 class="display-6 mb-2">Networking Concepts</h1>
-        <p class="text-muted mb-0">
-          This page explains how networking makes my deployed website work, with evidence (DNS lookup, IP address result,
-          and HTTPS request details).
-        </p>
-      </div>
+        <main>
+            <section class="p-4 rounded-4 border bg-white mb-4">
+                <h1 class="display-6">Networking Concepts</h1>
+                <p>
+                    This page explains the networking concepts used by my public website, including DNS resolution,
+                    IP addressing, HTTPS, status codes, request headers, and response headers.
+                </p>
+            </section>
 
-      <div class="row g-4">
-        <div class="col-12 col-lg-5">
-          <div class="p-3 rounded-4 border bg-body-tertiary">
-            <h2 class="h6 mb-2">Project info</h2>
-            <ul class="small mb-0">
-              <li><strong>Domain:</strong>ngocbnguyen.github.io</li>
-              <li><strong>Resolved IP:</strong> IPv4</li>
-              <li><strong>Protocol:</strong>HTTPS</li>
-              <li><strong>Status code:</strong>200 OK</li>
-            </ul>
-          </div>
-        </div>
+            <section class="p-4 rounded-4 border bg-body-tertiary mb-4">
+                <h2 class="h4">DNS and IP Addressing</h2>
+                <p>
+                    When a user visits <strong>ngocbnguyen.github.io</strong>, DNS resolves the domain name into GitHub Pages IP addresses.
+                    The site uses IPv4 addresses such as <strong>185.199.108.153</strong>, <strong>185.199.109.153</strong>,
+                    <strong>185.199.110.153</strong>, and <strong>185.199.111.153</strong>.
+                </p>
+            </section>
 
-        <!--DNS-->
-        <div class="col-12">
-          <div class="p-4 rounded-4 border bg-white">
-            <h2 class="h4 mb-3">1) DNS (Domain Name System)</h2>
-            <p>
-                When a user enters https://ngocbnguyen.github.io in a browser, the browser must first determine the server’s IP
-                 address because computers communicate using IP addresses rather than domain names. The browser sends a DNS query to a DNS 
-                 resolver, which searches the Domain Name System for the address associated with the domain. The resolver contacts DNS 
-                 servers until it reaches GitHub’s authoritative DNS servers, which return the IP addresses used by GitHub Pages 
-                 (such as 185.199.108.153–185.199.111.153).
-            </p>
+            <section class="p-4 rounded-4 border bg-white mb-4">
+                <h2 class="h4">HTTPS and Status Codes</h2>
+                <p>
+                    My website uses HTTPS, which encrypts communication between the browser and the GitHub Pages server.
+                    When the page loads successfully, the server returns the status code <strong>200 OK</strong>.
+                </p>
+            </section>
 
-            <div class="row g-3">
-              <div class="col-12 col-lg-6">
-                <h3 class="h6">Command I ran</h3>
-                <pre class="bg-body-tertiary p-3 rounded-3 mb-0"><code>nslookup ngocbnguyen.github.io</code></pre>
-              </div>
-            </div>
+            <section class="p-4 rounded-4 border bg-body-tertiary mb-4">
+                <h2 class="h4">Request and Response Headers</h2>
+                <p>
+                    Request headers are sent by the browser and include information such as the host, user agent, and accepted file types.
+                    Response headers are sent by the server and include information such as content type, caching rules, and security settings.
+                </p>
+            </section>
 
-            <hr class="my-4" />
+            <section class="p-4 rounded-4 border bg-white mb-4">
+                <h2 class="h4">Performance Optimization</h2>
+                <p>
+                    This site uses Bootstrap through a CDN. A CDN helps improve loading speed by serving files from distributed servers.
+                    The site also keeps files lightweight to reduce unnecessary network traffic.
+                </p>
+            </section>
 
-            <h3 class="h6">Output</h3>
-            <pre class="bg-body-tertiary p-3 rounded-3"><code> DiG 9.10.6 <<>> ngocbnguyen.github.io
-                ;; global options: +cmd
-                ;; Got answer:
-                ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3373
-                ;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1
-                
-                ;; OPT PSEUDOSECTION:
-                ; EDNS: version: 0, flags:; udp: 1440
-                ;; QUESTION SECTION:
-                ;ngocbnguyen.github.io.		IN	A
-                
-                ;; ANSWER SECTION:
-                ngocbnguyen.github.io.	1131	IN	A	185.199.111.153
-                ngocbnguyen.github.io.	1131	IN	A	185.199.109.153
-                ngocbnguyen.github.io.	1131	IN	A	185.199.108.153
-                ngocbnguyen.github.io.	1131	IN	A	185.199.110.153
-                
-                ;; Query time: 29 msec
-                ;; SERVER: fe80::1a60:41ff:fe71:840d%12#53(fe80::1a60:41ff:fe71:840d%12)
-                ;; WHEN: Thu Mar 05 22:29:13 EST 2026
-                ;; MSG SIZE  rcvd: 114</code></pre>
+            <section class="p-4 rounded-4 border bg-body-tertiary">
+                <h2 class="h4">Monitoring and Analysis</h2>
+                <p>
+                    Google Analytics is used to monitor website traffic, active users, page views, and visitor behavior.
+                    Browser Developer Tools are also used to inspect HTTPS requests, status codes, and headers.
+                </p>
+            </section>
+        </main>
+    </div>
 
-            <p class="small text-muted mb-0">
-              Short explanation: DNS gave me the IP address so my browser knows where to connect on the internet.
-            </p>
-          </div>
-        </div>
-
-        <!--IP addressing-->
-        <div class="col-12">
-          <div class="p-4 rounded-4 border bg-white">
-            <h2 class="h4 mb-3">2) IPv4 Addressing</h2>
-            <p>
-              The DNS result shows the IPv4 address for my domain. That IP address is the network destination the browser
-              connects to. Once the IP address is returned, the browser establishes a connection to that server using HTTPS. 
-              The GitHub Pages server then responds with the website files, which the browser renders as the webpage. In my deployment, the resolved address is:
-            </p>
-
-            <div class="row g-3">
-              <div class="col-12 col-lg-6">
-                <div class="p-3 rounded-3 border">
-                  <div class="small text-muted">IPv4 address</div>
-                  <div class="fs-5 fw-semibold">
-                    185.199.108.153 <br>
-                    185.199.109.153 <br>
-                    185.199.110.153 <br>
-                    185.199.111.153</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--Protocols-->
-        <div class="col-12">
-          <div class="p-4 rounded-4 border bg-white">
-            <h2 class="h4 mb-3">3) Protocols HTTPS</h2>
-            <p>
-                My website <strong>ngocbnguyen.github.io</strong> uses HTTPS (Hypertext Transfer Protocol Secure), which encrypts communication between the browser and the server using TLS. 
-                HTTPS ensures that the data exchanged between users and the website cannot be easily intercepted or modified. <br>
-                When the browser requests the webpage, the server responds with the status code <strong>200 OK</strong>, indicating that the request was successful and the page was delivered correctly. 
-                The browser sends request headers that include information such as the host, user agent, and accepted content types. 
-                The server responds with response headers that describe the returned content, such as the content type and caching policies. 
-                These headers and status codes can be viewed using the browser’s Developer Tools Network tab.
-            </p>
-
-            <hr class="my-4" />
-            <div class="row g-3">
-              <div class="col-12 col-lg-4">
-                <div class="p-3 rounded-3 border">
-                  <div class="small text-muted">Protocol</div>
-                  <div class="fw-semibold">HTTPS</div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4">
-                <div class="p-3 rounded-3 border">
-                  <div class="small text-muted">Status code</div>
-                  <div class="fw-semibold">200 OK</div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4">
-                <div class="p-3 rounded-3 border">
-                  <div class="small text-muted">Content type</div>
-                  <div class="fw-semibold">text/html; charset=utf-8</div>
-                </div>
-              </div>
-            </div>
-
-            <h3 class="h6 mt-4">Paste key headers here</h3>
-            <pre class="bg-body-tertiary p-3 rounded-3 mb-0"><code>request headers:
-                :authority
-                ngocbnguyen.github.io
-                :method
-                GET
-                :path
-                /networks-project-1/index.html
-                :scheme
-                https
-                accept
-                text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-                accept-encoding
-                gzip, deflate, br, zstd
-                accept-language
-                en-US,en;q=0.9,vi;q=0.8
-                priority
-                u=0, i
-                referer
-                https://ngocbnguyen.github.io/networks-project-1/network.html
-                sec-ch-ua
-                "Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"
-                sec-ch-ua-mobile
-                ?0
-                sec-ch-ua-platform
-                "macOS"
-                sec-fetch-dest
-                document
-                sec-fetch-mode
-                navigate
-                sec-fetch-site
-                same-origin
-                sec-fetch-user
-                ?1
-                upgrade-insecure-requests
-                1
-                user-agent
-                Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
-                
-
-response headers:
-accept-ranges
-bytes
-access-control-allow-origin
-*
-age
-0
-cache-control
-max-age=600
-content-encoding
-gzip
-content-length
-1639
-content-type
-text/html; charset=utf-8
-date
-Fri, 06 Mar 2026 03:56:08 GMT
-etag
-W/"69aa45b8-1462"
-expires
-Fri, 06 Mar 2026 03:24:26 GMT
-last-modified
-Fri, 06 Mar 2026 03:10:48 GMT
-server
-GitHub.com
-strict-transport-security
-max-age=31556952
-vary
-Accept-Encoding
-via
-1.1 varnish
-x-cache
-HIT
-x-cache-hits
-0
-x-fastly-request-id
-24b20930673f3352914fb937023b25c1029c2f3d
-x-github-request-id
-E591:271F9C:143E2A:15E265:69AA4691
-x-proxy-cache
-MISS
-x-served-by
-cache-pdk-kfty8610099-PDK
-x-timer
-S1772769369.615852,VS0,VE28
-
-</code></pre>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <footer class="border-top">
-      <div class="container py-3 small text-muted d-flex justify-content-between flex-wrap gap-2">
-        <span>© 2026 Ngoc Nguyen</span>
-        <a class="text-muted text-decoration-none" href="index.html">Back to Home</a>
-      </div>
-    </footer>
-
-    <!--bootstrap js bundle-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
